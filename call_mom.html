@@ -1,20 +1,30 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>FILL THIS OUT</title>
+        <title>To-Do List</title>
         <link rel="stylesheet" href = "style.css">
     </head>
     <body>
         <h1> To-Do List</h1>
-        <input type = "text" id = "list_enter" name = "list_name" placeholder="Enter list item...">
-        
-        <button class = "plus_button"> + </button>
-        <input type = "checkbox" id = "list_item" name = "list_item">
+        <div id= "input_box_and_button">
+            <input type = "text" id = "list_enter" name = "list_name" placeholder="Enter list item...">
+            <button id = "plus_button" class = "button"> + </button>
+         </div>
 
-        <label for = "list_item">Call Mom</label>
+        <div id = "list_items">
+            <li>
+                <input type = "checkbox" id = "list_item_4" name = "list_item_4">
+                <label for = "list_item">Call Mom</label>
+            </li>
+        </div>
 
-        <button class = "edit_list"> Edit List</button>
-        <button class = "hide_completed"> Hide Completed Items </button>
-        <button class = "delete_completed"> Delete Completed Items </button>
+        <div id= "edit_list">
+            <button id = "hide_completed" class = "button"> Edit List</button>
+        </div>
+
+        <div id= "bottom_buttons">
+            <button id = "hide_completed" class = "button"> Hide Completed Items </button>
+            <button id = "delete_completed" class = "button"> Delete Completed Items </button>
+        </div>
     </body>
 </html>
