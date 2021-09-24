@@ -21,6 +21,15 @@ Picture (5) shows what the list looks like after the "Hide Completed Items" butt
 
 ## Alternative Design Considerations
 
+The main alternative design choice that we discussed was automatically moving completed
+items to the bottom of the list. The thought behind this was that uncompleted items would
+likely be more important to the user, and if they happened to have a long list then it might be 
+frustrating to have to scroll through all of the completed items. However, we decided that having the
+option to hide the completed items handled this case. Here is a screenshot of what 
+this would have looked like:
+
+<img src="images/alternate_design.png" alt="drawing" width="300"/>
+
 ## User Testing
 
 For user testing, we showed the screenshots in the following section to a friend and asked them how they would complete each task. We found that for each task and at each stage, our design lined up with what the user expected.
@@ -81,4 +90,22 @@ After pressing confirm, they would be presented with a list with only the uncomp
 
 ## Challenges
 
+One challenge we came across was deciding how to facilitate editing of the list items. One possibility was to 
+mimic the behaviour of the Apple Notes app, where you can click on the items at any time and have the keyboard and cursor appear.
+However, we wanted to have a designated button so that the user would know that it was possible. This is how we ended adding the 
+"Edit List" button.
+
+Another challenge we faced was deciding what deleting completed items should look like. We knew that we couldn't simply
+delete them with only one prompt from the user (i.e., clicking the "Delete" button once). After some consideration, we decided
+on including a pop-up window that asks the user to confirm their intent on deleting the completed items after they hit the button. We also made
+the "Delete" button red as an indication of its function.
+
 ## Pride Points
+
+We are most proud of the flow for deleting completed items. We put some thought
+into this flow, and as a result made the "delete" button red and created
+a pop-up window so that the user would have to confirm that they really wanted to delete their items.
+
+We are also proud of our user testing. When we asked a couple of friends how they would go about
+adding items, editing their names, hiding completed items, and deleting completed items, they
+followed the exact steps that we had in mind during our design.
