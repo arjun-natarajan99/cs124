@@ -4,7 +4,7 @@ import List from "./List.js";
 
 function App(props) {
   return (
-    <List data={props.data} onItemAdded={props.onItemAdded} />
+    <List data={props.data} onItemAdded={props.onItemAdded} onItemsDeleted={props.onItemsDeleted} />
   );
 }
 
