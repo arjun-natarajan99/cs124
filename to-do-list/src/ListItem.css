@@ -1,0 +1,18 @@
+#nonEditableItems{
+    display: flex;
+}
+.nonEditableItem{
+    border: none;
+    background: transparent;
+}
+#editableItems {
+    display: flex;
+}
+#nonEditableItems textarea {
+    width: 100%;
+    resize: none;
+}
+#editableItems textarea {
+    width: 100%;
+    resize: none;
+}

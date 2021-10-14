@@ -14,17 +14,31 @@ function InMemoryApp(props) {
         setData(data.filter((item) => !ids.includes(item.id)));
     }
 
-    function onToggleItemChecked(id) {
+    // function onToggleItemChecked(id) {
+    //     function helper(a) {
+    //         if (a.id === id) {
+    //             a.checked = !a.checked;
+    //         }
+    //         return a;
+    //     }
+    //     setData(data.map(a => helper(a)));
+    // }
+
+    function onItemChanged(id, field, newVal){
         function helper(a) {
-            if (a.id === id) {
-                a.checked = !a.checked;
+            if (a.id === id){
+                a[field] = newVal;
             }
             return a;
         }
-        setData(data.map(a => helper(a)));
+        setData(data.map(helper));
     }
 
-    return <App data={data} onItemAdded={onItemAdded} onItemsDeleted={onItemsDeleted} onToggleItemChecked={onToggleItemChecked}/>
+    return <App data={data}
+                onItemAdded={onItemAdded}
+                onItemsDeleted={onItemsDeleted}
+                onItemChanged={onItemChanged}
+    />
 }
 
 export default InMemoryApp;

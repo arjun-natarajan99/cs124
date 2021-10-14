@@ -1,0 +1,27 @@
+.backdrop {
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 400pt;
+    right: 300pt;
+    height: 640px;
+    width: 360px;
+    background-color: rgba(0, 0, 0, .3);
+}
+#warning {
+    grid-row: 3;
+    grid-column: 1/span 3;
+    border: solid;
+    border-color: black;
+    background-color: lightgrey;
+    height: fit-content;
+    transform: translate(0, 150%);
+}
+
+#warning button {
+    transform: translate(215px, -3px);
+    align-content: center;
+}
+#confirm {
+    background: #fa454c;
+}
