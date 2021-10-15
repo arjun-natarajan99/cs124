@@ -21,6 +21,8 @@ Picture (5) shows what the list looks like after the "Hide Completed Items" butt
 
 ## Alternative Design Considerations
 
+The main alternative design choice that we discussed was automatically moving completed items to the bottom of the list. The thought behind this was that uncompleted items would likely be more important to the user, and if they happened to have a long list then it might be frustrating to have to scroll through all of the completed items. However, we decided that having the option to hide the completed items handled this case.
+
 ## User Testing
 
 For user testing, we showed the screenshots in the following section to a friend and asked them how they would complete each task. We found that for each task and at each stage, our design lined up with what the user expected.
