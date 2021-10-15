@@ -25,7 +25,7 @@ The main alternative design choice that we discussed was automatically moving co
 
 ## User Testing
 
-For user testing, we showed the screenshots in the following section to a friend and asked them how they would complete each task. We found that for each task and at each stage, our design lined up with what the user expected.
+For user testing, we showed the application to two friends and had them interact with the interface without any guidance. We found that for each task and at each stage, our design lined up with what the user expected and there were no usability concerns. It was nice to see that our implementation of dimming the plus button for an empty entry was appreciated.
 
 ## Final Design
 
@@ -35,61 +35,50 @@ Below we see what the empty list looks like. The add button is dimmed when there
 
 Now that there is input to the textbox, the add button brightens to notify the user that they can add the item.
 
-*Instert image here* 
-
-This is what the user would see if they entered one item into the list, "Buy new John Grisham book" and added it to the list.
-
 <img src="images/img2.png" alt="drawing" width="300"/>
 
-From the above non-empty list, adding a second item, "Eat Lunch," would look like this.
+This is what the user would see if they entered one item into the list, "Buy new John Grisham book" and added it to the list. One important change from our previous design is that now the buttons to "Hide Completed Items" and "Delete Completed Items" are hidden when there are no completed elements, as shown below. We made this decision to simplify the experience for the user and avoid confusion, as the two buttons will not accomplish anything in this state.
 
 <img src="images/img3.png" alt="drawing" width="300"/>
 
-Below we have a picture of what the list would look like with one task titled "Call Mom."
+From the above non-empty list, adding a second item, "Eat Lunch," would look like this.
 
 <img src="images/img4.png" alt="drawing" width="300"/>
 
-If the user clicked on the checkbox or its label, we will display buttons for hiding or deleting completed items.
+
+If the user clicked on the checkbox or its label for an item in the list, we will display buttons for hiding or deleting completed items.
 
 <img src="images/img5.png" alt="drawing" width="300"/>
 
-If a user had a list titled "Text John," this is what they would see.
+If the user wanted to rename "Buy new John Grisham book," they would press "Edit Items" and would be presented with the below screen. The checkbox turns into an editable text box and the button changes from "Edit Items" to "Save Changes."
 
 <img src="images/img6.png" alt="drawing" width="300"/>
 
-If they wanted to rename "Text John," they would press "Edit List" and would be presented with the below screen. The checkbox turns into an editable text box and the button changes from "Edit List" to "Save Changes."
+Then, when they press "Save Changes" they would be presented with the default list view.
+
+If a user had a list of multiple items, some of which had been marked complete, they would see the following.
 
 <img src="images/img7.png" alt="drawing" width="300"/>
 
-Then, when they press "Save Changes" they would be presented with the default list view, as shown below.
+If they pressed the "Hide Completed Items" button at the bottom of the screen, the would see the following. Notice that the button changes to say "Show Completed Items." We also added a transition where the elements that get hidden fade out of view instead of disappear immediately. This helps the user understand where these list items are going.
 
 <img src="images/img8.png" alt="drawing" width="300"/>
 
-If a user had a list of multiple items, some of which had been marked complete, they would see the following.
+If the user clicked the "Delete Completed Items" button, they would be presented with the following warning screen.
 
 <img src="images/img9.png" alt="drawing" width="300"/>
-
-If they pressed the "Hide Completed Items" button at the bottom of the screen, the would see the following. Notice that the button changes to say "Show Completed Items."
-
-<img src="images/img10.png" alt="drawing" width="300"/>
-
-If a user had a list of multiple items, some of which had been marked complete, they would see the following.
-
-<img src="images/img9.png" alt="drawing" width="300"/>
-
-If they clicked the "Delete Completed Items" button, they would be presented with the following warning screen.
-
-<img src="images/img12.png" alt="drawing" width="300"/>
 
 After pressing confirm, they would be presented with a list with only the uncompleted items, like the one below.
 
-<img src="images/img11.png" alt="drawing" width="300"/>
+<img src="images/img10.png" alt="drawing" width="300"/>
 
 
 ## Challenges
-One challenge we came across was deciding how to facilitate editing of the list items. One possibility was to mimic the behaviour of the Apple Notes app, where you can click on the items at any time and have the keyboard and cursor appear. However, we wanted to have a designated button so that the user would know that it was possible. This is how we ended adding the "Edit List" button.
+One challenge we came across was deciding how to facilitate editing of the list items. One possibility was to mimic the behaviour of the Apple Notes app, where you can click on the items at any time and have the keyboard and cursor appear. However, we wanted to have a designated button so that the user would know that it was possible. This is how we decided on adding the "Edit Items" button.
 
 Another challenge we faced was deciding what deleting completed items should look like. We knew that we couldn't simply delete them with only one prompt from the user (i.e., clicking the "Delete" button once). After some consideration, we decided on including a pop-up window that asks the user to confirm their intent on deleting the completed items after they hit the button. We also made the "Delete" button red as an indication of its function.
+
+We also had challenges figuring out how to wrap long text, as our implementation method of using text inputs did not allow for text on multiple lines. We resolved this by using textarea elements instead.
 
 ## Pride Points
 We are most proud of the flow for deleting completed items. We put some thought into this flow, and as a result made the "delete" button red and created a pop-up window so that the user would have to confirm that they really wanted to delete their items. Additionally, when the user deletes or hides completed items, they slowly fade out rather than immediately disappearing.
