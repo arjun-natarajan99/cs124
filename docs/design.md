@@ -47,7 +47,7 @@ Below we have a picture of what the list would look like with one task titled "C
 
 <img src="images/img4.png" alt="drawing" width="300"/>
 
-If the user clicked on the checkbox or its label, this is now what the screen would display.
+If the user clicked on the checkbox or its label, we will display buttons for hiding or deleting completed items.
 
 <img src="images/img5.png" alt="drawing" width="300"/>
 
