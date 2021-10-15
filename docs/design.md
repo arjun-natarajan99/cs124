@@ -1,4 +1,4 @@
-# Lab 1 Design Document 
+# Lab 2 Design Document 
 
 ## Design Decisions
 
@@ -27,9 +27,13 @@ For user testing, we showed the screenshots in the following section to a friend
 
 ## Final Design
 
-Below we see what the empty list looks like.
+Below we see what the empty list looks like. The add button is dimmed when there is no input in the textbox.
 
 <img src="images/img1.png" alt="drawing" width="300"/>
+
+Now that there is input to the textbox, the add button brightens to notify the user that they can add the item.
+
+*Instert image here* 
 
 This is what the user would see if they entered one item into the list, "Buy new John Grisham book" and added it to the list.
 
@@ -79,6 +83,13 @@ After pressing confirm, they would be presented with a list with only the uncomp
 
 <img src="images/img11.png" alt="drawing" width="300"/>
 
+
 ## Challenges
+One challenge we came across was deciding how to facilitate editing of the list items. One possibility was to mimic the behaviour of the Apple Notes app, where you can click on the items at any time and have the keyboard and cursor appear. However, we wanted to have a designated button so that the user would know that it was possible. This is how we ended adding the "Edit List" button.
+
+Another challenge we faced was deciding what deleting completed items should look like. We knew that we couldn't simply delete them with only one prompt from the user (i.e., clicking the "Delete" button once). After some consideration, we decided on including a pop-up window that asks the user to confirm their intent on deleting the completed items after they hit the button. We also made the "Delete" button red as an indication of its function.
 
 ## Pride Points
+We are most proud of the flow for deleting completed items. We put some thought into this flow, and as a result made the "delete" button red and created a pop-up window so that the user would have to confirm that they really wanted to delete their items. Additionally, when the user deletes or hides completed items, they slowly fade out rather than immediately disappearing.
+
+We are also proud of our user testing. When we asked a couple of friends how they would go about adding items, editing their names, hiding completed items, and deleting completed items, they followed the exact steps that we had in mind during our design.
