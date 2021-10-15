@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 2fr 1fr 10fr 2fr;
-    background-color: blanchedalmond;
+    background-color: #C9DCE0;
 }
 h1 {
     grid-row: 1;
@@ -58,14 +58,34 @@ button {
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border: none;
 }
-.disabled {
-    width:100px;
-    opacity: 50%;
-}
 
 #addItem {
     width:35px;
     background-color: lightgreen;
 }
+.disabled {
+    width:100px;
+    background-color: rgba(56,93,56,0.5) !important;
+}
+
+.fade-enter {
+    opacity:0;
+}
+
+.fade-enter-active {
+    opacity:1;
+    transition: all 1s;
+}
+
+.fade-leave {
+    opacity:1;
+}
+
+.fade-leave-active {
+    opacity:0;
+    transition: all 1s;
+
+}
+
 
 

@@ -24,7 +24,7 @@ function ListItem(props) {
                        onChange={() => props.onItemChanged(props.id,"checked", !props.checked)}
                     />
                     <textarea
-                           class={"nonEditableItem"}
+                           className={"nonEditableItem"}
                            id={props.id}
                            value={props.item}
                            readOnly
