@@ -1,11 +1,14 @@
 #list {
-    font-family:'Times New Roman', Times, serif;
+    font-family: "SF Pro", "Verdana", sans-serif;
     height: 640px;
     width: 360px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 2fr 1fr 10fr 2fr;
+    grid-template-columns: 50% 20% 30%;
+    grid-template-rows: 2fr 1fr 1fr 10fr 2fr;
     background-color: #C9DCE0;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 h1 {
     grid-row: 1;
@@ -16,41 +19,62 @@ h1 {
 
 #inputBox_Button {
     grid-row: 2;
+    grid-column: 1/ span 3;
+}
+
+#inputBox_Button input[type="text"]{
+    width: 45%;
+    margin-left: 5px;
+}
+
+#selectPriority {
+    width: 30%;
+    margin-left: 5px;
+}
+
+#sort {
+    grid-row: 3;
     grid-column: 1/ span 2;
+    justify-content: center;
+    width: 101%;
 }
 
 #listItems {
-    grid-row: 3;
+    grid-row: 4;
     grid-column: 1/span 3;
     display: flex;
     flex-direction: column;
     list-style: none;
+    overflow-y:auto;
+    width: 340px;
 }
 
 #editButton {
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 3;
+    transform: translate(-18px, -3px);
 }
 
 #editButton button {
     height: 25px;
-    width:120px;
+    width:100%;
+
 }
 
 .completedButtons {
-    grid-row: 4;
+    grid-row: 5;
     grid-column: 1/ span 3;
     text-align: center;
     width: 100%;
-
 }
 
 .completedButtons button {
-    width:50%;
+    width: 45%;
 }
 
 #deleteCompleted {
     background-color: #fa454c;
+    margin-left: 5px;
 }
 
 button {
@@ -60,7 +84,7 @@ button {
 }
 
 #addItem {
-    width:35px;
+    width:15%;
     background-color: lightgreen;
 }
 .disabled {
@@ -85,6 +109,19 @@ button {
     opacity:0;
     transition: all 1s;
 
+}
+#labels {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+
+}
+#labels h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
+#priorityDropDown{
+    width: 90%;
 }
 
 

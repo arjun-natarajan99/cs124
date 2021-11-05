@@ -10,13 +10,11 @@ function Warning(props){
                     Cancel
                 </button>
                 <button id="confirm" onClick={(e)=>
-                {props.onItemsDeleted(props.data.filter((item) => item.checked).map((item) => item.id));
-                    props.onClose();}
-                    }>
+                        {props.onItemsDeleted(props.data.filter((item) => item.checked).map((item) => item.id));
+                        props.onClose();}
+                }>
                     Confirm
                 </button>
-
-
             </div>
         </div>
     );

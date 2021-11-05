@@ -25,62 +25,60 @@ The main alternative design choice that we discussed was automatically moving co
 
 ## User Testing
 
-For user testing, we showed the application to two friends and had them interact with the interface without any guidance. We found that for each task and at each stage, our design lined up with what the user expected and there were no usability concerns. It was nice to see that our implementation of dimming the plus button for an empty entry was appreciated.
+For user testing, we showed the application to two friends and had them interact with the interface without any guidance. We found that for each task and at each stage, our design lined up with what the user expected and there were no usability concerns. We observed that our implementation of dimming the inputs on edit mode was appreciated. Additionally, people found the descriptions of the sorting drop-down and its design/layout on the screen to be understandable.
 
 ## Final Design
 
-Below we see what the empty list looks like. The add button is dimmed when there is no input in the textbox.
+Below we see what the empty list looks like. The add button is dimmed when there is no input in the textbox. Notably what is different now from the previous iteration is that the empty textbox now prompts the user to enter text and there is also a drop down menu for the user to select the priority of tasks they are going to add.
 
 <img src="images/img1.png" alt="drawing" width="300"/>
 
-Now that there is input to the textbox, the add button brightens to notify the user that they can add the item.
-
-<img src="images/img2.png" alt="drawing" width="300"/>
-
-This is what the user would see if they entered one item into the list, "Buy new John Grisham book" and added it to the list. One important change from our previous design is that now the buttons to "Hide Completed Items" and "Delete Completed Items" are hidden when there are no completed elements, as shown below. We made this decision to simplify the experience for the user and avoid confusion, as the two buttons will not accomplish anything in this state.
+As before, now that there is input to the textbox, the add button brightens to notify the user that they can add the item.
 
 <img src="images/img3.png" alt="drawing" width="300"/>
 
-From the above non-empty list, adding a second item, "Eat Lunch," would look like this.
+This is what the user would see if they entered one item into the list, "Go to Joshua Tree" and added it to the list. Compared to our previous design this is very different. For one, there is now a header that labels the actual item and a header that labels its priority for the user to understand what they represent. Additionally, there is now the ability to directly delete that single item by clicking on the "x" button. This allows users to delete individual items from the list without worrying about disrupting their list of completed items. Finally, here we can see that there is now a dropdown menu to sort items in the list, by name, creation date, and priority. 
+
+<img src="images/img2.png" alt="drawing" width="300"/>
+
+If a user adds an item to the list without selecting its priority, the following is what they would see.
 
 <img src="images/img4.png" alt="drawing" width="300"/>
 
 
-If the user clicked on the checkbox or its label for an item in the list, we will display buttons for hiding or deleting completed items.
+If a user clicks on the checkbox or its label for an item in the list, we not only display buttons for hiding or deleting completed items as before, but the item is now also crossed out, as shown below.
 
 <img src="images/img5.png" alt="drawing" width="300"/>
 
-If the user wanted to rename "Buy new John Grisham book," they would press "Edit Items" and would be presented with the below screen. The checkbox turns into an editable text box and the button changes from "Edit Items" to "Save Changes."
+If the user wanted to rename "Eat Lunch," they would press "Edit Items" and would be presented with the below screen. The checkbox turns into an editable text box and the button changes from "Edit Items" to "Done." Previously, this button said "Save Changes" but this was not accurate as the changes are continuously being saved, so we decided to change the button's label. In this edit screen, they can now also edit the priority of the item. A notable change from our previous iteration is that now, all of the inputs for creating a new item - the add button, the input text field, and the priority dropdown - are all disabled, as is the sorting drop down, and the checkboxes for each item. In the previous iteration users could add items to the list while in edit mode, but in our user testing, we discovered that this was confusing and so we disabled all inputs to create a new list item. Additionally, we believe that sorting the list while in edit mode would be confusing and so we decided to disable it. In our previous design, marking any item as complete was disabled but there was no visual indication for this, and so in this iteration we dim and disable the checkboxes in edit mode. Finally, we have removed the button to delete all completed items from the list while in edit mode, so as to create constraints and not overwhelm the user with possible actions.
 
 <img src="images/img6.png" alt="drawing" width="300"/>
 
-Then, when they press "Save Changes" they would be presented with the default list view.
+Then, when they press "Done" they would be presented with the default list view.
 
 If a user had a list of multiple items, some of which had been marked complete, they would see the following.
 
 <img src="images/img7.png" alt="drawing" width="300"/>
 
-If they pressed the "Hide Completed Items" button at the bottom of the screen, the would see the following. Notice that the button changes to say "Show Completed Items." We also added a transition where the elements that get hidden fade out of view instead of disappear immediately. This helps the user understand where these list items are going.
+If they then pressed the "Hide Completed Items" button at the bottom of the screen, the would see the following. Notice that the button changes to say "Show Completed Items." The elements that get hidden fade out of view instead of disappear immediately, which helps the user understand where these list items are going. In this iteration, we have decided to remove the "Delete Completed Items" button while completed items are being hidden. This prevents the user from accidentally deleting items they did not intend to since they cannot see what they are deleting.
 
 <img src="images/img8.png" alt="drawing" width="300"/>
 
-If the user clicked the "Delete Completed Items" button, they would be presented with the following warning screen.
+We have not made any changes to the flow once a user presses "Delete Completed Items."
 
-<img src="images/img9.png" alt="drawing" width="300"/>
+One visual change made from the previous iteration is that now if a user has many items on the list, they can scroll through them. Previously, the buttons to hide and delete completed items would get pushed off the screen, but now they are fixed and the list is scrollable, as shown in the two images below.
 
-After pressing confirm, they would be presented with a list with only the uncompleted items, like the one below.
-
-<img src="images/img10.png" alt="drawing" width="300"/>
-
+<img src="images/img9.png" alt="drawing" width="300"/><img src="images/img10.png" alt="drawing" width="300"/>
 
 ## Challenges
-One challenge we came across was deciding how to facilitate editing of the list items. One possibility was to mimic the behaviour of the Apple Notes app, where you can click on the items at any time and have the keyboard and cursor appear. However, we wanted to have a designated button so that the user would know that it was possible. This is how we decided on adding the "Edit Items" button.
+A significant challenge that we faced in this version of our application was getting the sorting functionality to work as intended. Particularly, we discovered that when attempting to sort by priority, Firestore was only able to do an alphnumerical sorting of the three priority levels - high, medium, and low - and so they did not sort in the way we intended. To solve this, the priority attribute is actually an object with a key/value pair. We display the values, which are high, medium, and low, and we sort by the keys, which are just characters assigned such that they sort in the intended fashion. 
 
-Another challenge we faced was deciding what deleting completed items should look like. We knew that we couldn't simply delete them with only one prompt from the user (i.e., clicking the "Delete" button once). After some consideration, we decided on including a pop-up window that asks the user to confirm their intent on deleting the completed items after they hit the button. We also made the "Delete" button red as an indication of its function.
-
-We also had challenges figuring out how to wrap long text, as our implementation method of using text inputs did not allow for text on multiple lines. We resolved this by using textarea elements instead.
+One challenge that we were unable to solve, for a similar reason, was that when in edit mode, changes to the list item would cause the items to move around depending on the sorting preference. We attempted to store the order of list items when the user presses the edit button and sort by this order, but again due to Firestore's necessity of sorting alphanumerical sorting, we were unable to create a custom sorting function that would allow us to accomplish this. 
 
 ## Pride Points
-We are most proud of the flow for deleting completed items. We put some thought into this flow, and as a result made the "delete" button red and created a pop-up window so that the user would have to confirm that they really wanted to delete their items. Additionally, when the user deletes or hides completed items, they slowly fade out rather than immediately disappearing.
+
+We are most proud of our thoughtfulness and incorporation of ideas as to how a user would actually want to interact with this product. For example, the user can select a priority for a task when creating it, but they are not forced to do so. The attention to detail in ensuring that the menu elements in the top two rows are all aligned are also things we are proud of.
+
+We are proud of the flow for deleting  items. We put some thought into this flow, and as a result made the "Delete all Completed Items" button red and created a pop-up window so that the user would have to confirm that they really wanted to delete their items. Additionally, when the user deletes or hides completed items, they slowly fade out rather than immediately disappearing. Moreover, on the desktop, if a user highlights over the X button to delete an item, it turns red just as the delete all completed items button is, which creates a unified design language that is understandable. 
 
 We are also proud of our user testing. When we asked a couple of friends how they would go about adding items, editing their names, hiding completed items, and deleting completed items, they followed the exact steps that we had in mind during our design.
