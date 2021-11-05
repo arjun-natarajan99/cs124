@@ -31,8 +31,7 @@ function InMemoryApp(props) {
             item:item,
             checked: false,
             created: firebase.database.ServerValue.TIMESTAMP,
-            priority: priority,
-            order: null};
+            priority: priority};
         const docRef = collection.doc(newId);
         docRef.set(newItem);
     }
