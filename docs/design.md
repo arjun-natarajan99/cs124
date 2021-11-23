@@ -44,7 +44,7 @@ This is what the user would see if they select the "Homework" list. Here, you ca
 
 <img src="images/ListWithCompleted.png" alt="drawing" width="300"/>
 
-If a user toggle the Hide Completed Items option on, the toggle shows a checkmark and the completed items fade away. Also, we added lines between items to more clearly separate them. Also, the list items will scroll into view in edit mode.
+If a user toggle the Hide Completed Items option on, the toggle shows a checkmark and the completed items fade away. Also, we added lines between items to more clearly separate them. Also, when editing an list item, if the item changes position in the list due to sorting, it will scroll into view. We also fixed the cursor to works properly.
 
 <img src="images/HideCompletedItems.png" alt="drawing" width="300"/>
 
@@ -52,6 +52,9 @@ This is what the user sees if they click on the pencil icon to edit the list nam
 
 <img src="images/EditListName.png" alt="drawing" width="300"/>
 
+[Click here](https://youtu.be/KlwYgEHD32k) to view the demostration of our app using the screen reader.
+
+[Click here](https://youtu.be/Bq7MhzmsT9s) to view the demostration of our app using only the keyboard.
 
 ## Challenges
 We had a few challenges this week with responsive design and meaningful user interface. Because we added lost of functionality (a main page with all of the list names, new buttons for navigation, a new toggle button, etc.) this week, we needed to make sure that all of the extra graphics fit within screens of different sizes. This took some time, but we decided to use a combination of flex boxes, alignment commands, and media queries to ensure that our application was usable for the different sizes. 
