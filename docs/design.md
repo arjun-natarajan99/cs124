@@ -32,9 +32,9 @@ For accessibility testing, we had a friend of ours to try using our application 
 
 ## Final Design
 
-Below we see what the empty list looks like. The add button is dimmed when there is no input in the textbox. Notably what is different now from the previous iteration is that the empty textbox now prompts the user to enter text and there is also a drop down menu for the user to select the priority of tasks they are going to add.
+Below we see what the screen looks like when no lists have been created. The add button is dimmed when there is no input in the textbox. 
 
-<img src="images/img1.png" alt="drawing" width="300"/>
+<img src="images/EmptyLists.png" alt="drawing" width="300"/>
 
 As before, now that there is input to the textbox, the add button brightens to notify the user that they can add the item.
 
