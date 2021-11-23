@@ -74,9 +74,11 @@ One visual change made from the previous iteration is that now if a user has man
 <img src="images/img9.png" alt="drawing" width="300"/><img src="images/img10.png" alt="drawing" width="300"/>
 
 ## Challenges
-A significant challenge that we faced in this version of our application was getting the sorting functionality to work as intended. Particularly, we discovered that when attempting to sort by priority, Firestore was only able to do an alphnumerical sorting of the three priority levels - high, medium, and low - and so they did not sort in the way we intended. To solve this, the priority attribute is actually an object with a key/value pair. We display the values, which are high, medium, and low, and we sort by the keys, which are just characters assigned such that they sort in the intended fashion. 
+We had a few challenges this week with responsive design and meaningful user interface. Because we added lost of functionality (a main page with all of the list names, new buttons for navigation, a new toggle button, etc.) this week, we needed to make sure that all of the extra graphics fit within screens of different sizes. This took some time, but we decided to use a combination of flex boxes, alignment commands, and media queries to ensure that our application was usable for the different sizes. 
 
-One challenge that we were unable to solve, for a similar reason, was that when in edit mode, changes to the list item would cause the items to move around depending on the sorting preference. We attempted to store the order of list items when the user presses the edit button and sort by this order, but again due to Firestore's necessity of sorting alphanumerical sorting, we were unable to create a custom sorting function that would allow us to accomplish this. 
+Another challenge we ran into was ensuring that the application was compatible and easy to use with a screen reader. We did user testing, and tested the app extensively ourselves in attempts to make it as compatible as possible with keyboard and screen reader users.
+
+
 
 ## Pride Points
 
@@ -84,4 +86,4 @@ We are most proud of our thoughtfulness and incorporation of ideas as to how a u
 
 We are proud of the flow for deleting  items. We put some thought into this flow, and as a result made the "Delete all Completed Items" button red and created a pop-up window so that the user would have to confirm that they really wanted to delete their items. Additionally, when the user deletes or hides completed items, they slowly fade out rather than immediately disappearing. Moreover, on the desktop, if a user highlights over the X button to delete an item, it turns red just as the delete all completed items button is, which creates a unified design language that is understandable. 
 
-We are also proud of our user testing. When we asked a couple of friends how they would go about adding items, editing their names, hiding completed items, and deleting completed items, they followed the exact steps that we had in mind during our design.
+We are also proud of our user testing. Through user testing, we were able to make our application more accessible to keyboard and screen reader users. Additionally, we gained valuable ideas about how the sizing of our graphics should respond to different screen sizes.
