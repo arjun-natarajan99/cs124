@@ -1,4 +1,4 @@
-# Lab 2 Design Document 
+# Lab 4 Design Document 
 
 ## Design Decisions
 
