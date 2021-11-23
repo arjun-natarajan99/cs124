@@ -6,13 +6,18 @@ function Warning(props){
         <div className="backdrop">
             <div id="warning">
                 <p>Are you sure you want to delete all completed items? This action is irreversible.</p>
-                <button id="cancel" onClick={props.onClose}>
+                <button tabIndex={1} id="cancel" onClick={props.onClose}
+                        aria-label={"Do not delete items."}
+                >
                     Cancel
                 </button>
-                <button id="confirm" onClick={(e)=>
+                <button tabIndex={2}
+                        id="confirm"
+                        onClick={(e)=>
                         {props.onItemsDeleted(props.data.filter((item) => item.checked).map((item) => item.id));
-                        props.onClose();}
-                }>
+                        props.onClose();}}
+                        aria-label={"Delete all items. This action is irreversible."}
+                >
                     Confirm
                 </button>
             </div>

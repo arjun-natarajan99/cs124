@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import InMemoryApp from './InMemoryApp.js';
+import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 
 const initialData = [
@@ -20,7 +20,7 @@ const initialData = [
 
 ReactDOM.render(
   <React.StrictMode>
-      <InMemoryApp initialData={initialData}/>
+      <App initialData={initialData}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

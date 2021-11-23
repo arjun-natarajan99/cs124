@@ -1,10 +1,19 @@
 #listItem {
     height: 40px;
     margin-bottom: 20px;
+    display: flex;
+    /*justify-content: space-between;*/
+    border-bottom: gray;
+    border-bottom-style: solid;
 }
 
 #nonEditableItems{
     display: flex;
+    width: 95%;
+}
+#editableItems{
+    display: flex;
+    width: 95%;
 }
 #nonEditableItems .checked {
     text-decoration: line-through;
@@ -12,10 +21,6 @@
 .nonEditableItem {
     border: none;
     background: transparent;
-    max-width: 60%;
-}
-.editableItem {
-    max-width: 60%;
 }
 
 #priority {
@@ -23,6 +28,7 @@
     font-size: smaller;
     padding-bottom: 10px;
     transform:translate(0px, -10px);
+    white-space: nowrap;
 }
 
 #editableItems {
@@ -37,6 +43,7 @@
     width: 100%;
     resize: none;
     transition: 180ms box-shadow ease-in-out;
+    font-family: "SF Pro";
 }
 #priorityDropDownEditable {
     width: 33%;
