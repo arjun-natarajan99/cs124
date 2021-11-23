@@ -1,0 +1,27 @@
+.fade-enter {
+    opacity:0;
+}
+
+.fade-enter-active {
+    opacity:1;
+    transition: all 1s;
+}
+
+.fade-leave {
+    opacity:1;
+}
+
+.fade-leave-active {
+    opacity:0;
+    transition: all 1s;
+}
+.loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background: #C9DCE0;
+    border: solid;
+    height: 100vh;
+    width: 100vw;
+}
