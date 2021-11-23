@@ -21,11 +21,14 @@ Picture (5) shows what the list looks like after the "Hide Completed Items" butt
 
 ## Alternative Design Considerations
 
-The main alternative design choice that we discussed was automatically moving completed items to the bottom of the list. The thought behind this was that uncompleted items would likely be more important to the user, and if they happened to have a long list then it might be frustrating to have to scroll through all of the completed items. However, we decided that having the option to hide the completed items handled this case.
+The main alternative design choice that we discussed had to do with how we should display multiple lists in the main page of our app. One idea was to have tabs in the app that the user could click on to maneuver between different to-do lists. However, we decided that it was better to display the list names vertically and highlight/bold a list while it is being hovered over, to indicate that the user can click on it.
 
 ## User Testing
 
-For user testing, we showed the application to two friends and had them interact with the interface without any guidance. We found that for each task and at each stage, our design lined up with what the user expected and there were no usability concerns. We observed that our implementation of dimming the inputs on edit mode was appreciated. Additionally, people found the descriptions of the sorting drop-down and its design/layout on the screen to be understandable.
+For user testing, we showed the application to a friend of ours and asked them to create new lists and add items in each of them, while marking a couple as complete and then hiding/deleting them. During this testing, we learned that our button for hiding completed items was not easily understandable. So, we switched to using an animated toggle to indicate whether the list is currently hiding completed items or not.
+
+For accessibility testing, we had a friend of ours to try using our application while closing their eyes and using only the keyboard. From this testing we discovered that we needed to fix descriptions for the deletion of list items, editing of a list's name, and the back button for going back to the main page.
+
 
 ## Final Design
 
