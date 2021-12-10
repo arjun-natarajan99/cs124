@@ -5,6 +5,8 @@ import {useState, useEffect} from "react";
 import './List.css';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Toggle from "react-toggle";
+import ShareScreen from "./ShareScreen";
+import share from './share.png';
 
 
 function List(props) {
@@ -54,10 +56,11 @@ function List(props) {
                     aria-label="Back button to see all lists"
             >
                 ← </button>
+
             {listNameEditable ?
                 <div className="listName">
                     <input value={props.selectedListName}
-                           onChange={(e) => props.onListNameChanged(props.selectedListID, e.target.value)}
+                           onChange={(e) => props.onListNameChanged(props.id, e.target.value)}
                            onKeyPress={(e) => {
                                if (e.key === "Enter"){
                                    setListNameEditable(false);
@@ -76,6 +79,11 @@ function List(props) {
                             aria-label="Click to Edit List Name">✏️</button>
                 </div>
             }
+            {props.showShareScreenEmails && <input type="image"
+                                                   src={share}
+                                                   alt="share list"
+                                                   id="shareListsFromList"
+                                                   onClick={() => props.setShowShareScreenID(props.id)}/>}
             <div id="inputBox_Button">
                 <button id="addItem"
                         tabindex="-1"
@@ -176,9 +184,14 @@ function List(props) {
                 Delete Completed Items
             </button>
             }
-                {/* </div>*/}
-
-            {/*}*/}
+            {(props.showShareScreenID !== null) && <ShareScreen
+                onListShared={props.onListShared}
+                showShareScreenID={props.showShareScreenID}
+                setShowShareScreenID={props.setShowShareScreenID}
+                showShareScreenEmails={props.showShareScreenEmails}
+                onListUnshared={props.onListUnshared}
+                user={props.user}
+            />}
 
         </div>
 

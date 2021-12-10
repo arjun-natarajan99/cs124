@@ -4,7 +4,7 @@ import "./Warning.css"
 function Warning(props){
     return (
         <div className="backdrop">
-            <div id="warning">
+            <div className="warningPopup">
                 <p>Are you sure you want to delete all completed items? This action is irreversible.</p>
                 <button tabIndex={1} id="cancel" onClick={props.onClose}
                         aria-label={"Do not delete items."}

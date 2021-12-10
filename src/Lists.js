@@ -3,14 +3,17 @@ import {useCollection} from "react-firebase-hooks/firestore";
 import React, {useState} from "react";
 import { CSSTransitionGroup } from 'react-transition-group';
 import {useLoading, Oval} from "@agney/react-loading";
+import share from "./share.png";
+import ShareScreen from "./ShareScreen";
+import './ShareScreen.css';
+import dropdown from "./dropdown.png";
+import {useMediaQuery} from "react-responsive";
 
-const collectionName = "lists";
 
 function Lists(props){
     const [newListText, setNewListText] = useState("");
-    const query = props.db.collection(collectionName).orderBy(props.sortListField, props.sortListDirection);
-    const collection = props.db.collection(collectionName);
-    const [value, loading, error] = useCollection(query);
+    const [showLogout, setShowLogout] = useState(false);
+    const hideUsername = useMediaQuery({maxWidth:650});
 
     const { containerProps, indicatorEl } = useLoading({
         loading: true,
@@ -18,7 +21,7 @@ function Lists(props){
         indicator: <Oval width="30"/>
     });
 
-    if (loading){
+    if (props.loading){
         return <div className="loading">
             <h1> Hang tight...</h1>
             <section {...containerProps}>
@@ -27,11 +30,8 @@ function Lists(props){
         </div>
     }
 
-    let data = null;
 
-    if (value) {
-        data = value.docs.map(a => a.data());
-    }
+
     const sortLabels = {
         created: {name: "Creation Date", asc: "Old → New", desc: "New → Old"},
         name: {name: "Name", desc: "Z → A", asc: "A → Z"}
@@ -48,34 +48,65 @@ function Lists(props){
             }
         }
     }
-    const lists = data.map(a =>
-        <div id="li">
+    function generateLists(a, isOwner){
+        return (<div id="li">
             <p id="listName"
                tabIndex={0}
                onClick={() =>
                {
-                props.setSelectedListID(a.id);
-                props.setSelectedListName(a.name);
+                   props.setSelectedListID(a.id);
+                   props.setSelectedListName(a.name);
                }}
                onKeyPress={(e) => {
                    if(e.key === "Enter" || e.key === " ") {
                        props.setSelectedListID(a.id);
                        props.setSelectedListName(a.name);
                    }
-                }}
+               }}
                role="button"
                aria-label={`Select List with Name ${a.name}`}
             >{a.name}</p>
-            <button id="deleteList" onClick={() => props.onListDeleted(a.id)}
-                    aria-label={`Delete List with Name ${a.name}`}>x</button>
-        </div>
-    );
+            {isOwner &&
+                <input type='image'
+                       id="shareLists"
+                       src={share}
+                       alt="share list"
+                       onClick={() => {
+                         props.setShowShareScreenID(a.id);
+                         props.setShowShareScreenEmails(a.sharedWith);
+                     }}
+                />
+            }
+            {isOwner && <button className="listsButton" id="deleteList" onClick={() => props.onListDeleted(a.id)}
+                    aria-label={`Delete List with Name ${a.name}`}>x</button>}
+            {!isOwner && <button className="listsButton" onClick={() => props.onListUnshared(a.id, props.user.email, false)}> Unshare with Me</button>}
+        </div>);
+    }
+    const yourLists = props.data.map(a => generateLists(a, true));
+    const sharedLists = props.sharedData.map(a => generateLists(a,false));
+
     return (<div id="lists">
             <h1>To-Do Lists</h1>
+                {hideUsername ?
+                    <div id="verifyAndLogout">
+                        {!props.user.emailVerified && <button type="button" id="verify" onClick={props.verifyEmail}>Verify email</button>}
+                        <button type="button" id="alternateLogOut" onClick={() => props.auth.signOut()}>Log Out</button>
+                    </div>
+                    :
+                    <div id="usernameLogOut">
+                        <p id="username"
+                           onClick={() => setShowLogout(!showLogout)}
+                        >{!hideUsername && props.user.email}<input type="image" src={dropdown} alt="dropdown"/></p>
+
+                        {showLogout && !props.user.emailVerified && <button type="button" id="verify" onClick={props.verifyEmail}>Verify email</button>}
+                        {showLogout && <button type="button" id="logOut" onClick={() => props.auth.signOut()}>Log Out</button>}
+                    </div>
+                }
+
             <div id="newListComponents">
                 <button id="addList"
                         tabIndex="-1"
-                        className={newListText ? "enabled" : "disabled"}
+                        className= {`listsButton ${newListText ? "enabled" : "disabled"}`}
                         onClick={(e)=> {
                             if (newListText !== "") {
                                 props.onListAdded(newListText);
@@ -100,7 +131,7 @@ function Lists(props){
                        value={newListText}
                       />
             </div>
-            {lists.length !== 0 &&
+            {yourLists.length + sharedLists.length !== 0 &&
                 <div id="sortList">
                     <select id="sortDropDown"
                             onChange={(e) => props.onSortLists(e.target.value)}
@@ -113,14 +144,33 @@ function Lists(props){
             }
 
             <div id="listsDiv">
-                <h2 id="yourLists">Your Lists</h2>
+                <h2 id="yourListsHeader">Your Lists</h2>
+                <div className="lists">
                     <CSSTransitionGroup
                         transitionName="fade"
                         transitionEnter={300}
                         transitionLeave={300}>
-                        {lists}
+                        {yourLists}
                     </CSSTransitionGroup>
+                </div>
+                <h2 id="sharedLists">Lists Shared with You</h2>
+                <div className="lists">
+                    <CSSTransitionGroup
+                        transitionName="fade"
+                        transitionEnter={300}
+                        transitionLeave={300}>
+                        {sharedLists}
+                    </CSSTransitionGroup>
+                </div>
             </div>
+            {(props.showShareScreenID !== null) && <ShareScreen
+                onListShared={props.onListShared}
+                showShareScreenID={props.showShareScreenID}
+                setShowShareScreenID={props.setShowShareScreenID}
+                showShareScreenEmails={props.showShareScreenEmails}
+                onListUnshared={props.onListUnshared}
+                user={props.user}
+            />}
 
 
         </div>
