@@ -8,7 +8,7 @@ function SelectionMaintainingInput(props) {
     useEffect(() => {
         const input = ref.current;
         if (input) input.setSelectionRange(cursor, cursor);
-        if (document.activeElement.id == props.id && input) {
+        if (document.activeElement.id === props.id && input) {
             input.scrollIntoView({ behavior: 'smooth', block: "nearest"});
         }
     }, [ref, cursor, value]);

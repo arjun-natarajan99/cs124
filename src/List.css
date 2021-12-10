@@ -30,7 +30,6 @@ button#backButton:hover{
     grid-column: 1/ span 3;
     justify-content: center;
     padding-left: 45px;
-    /*padding-right: 20px ;*/
     width: 85%;
 }
 .listName button {
@@ -38,10 +37,12 @@ button#backButton:hover{
 }
 h1 {
     grid-row: 1;
-    grid-column: 1/ span 3;
-    text-align: center;
+    grid-column: 1;
+    text-align: left;
     font-family: 'Courier New', Courier, monospace;
     overflow-y: auto;
+    margin-top: 0px;
+    padding-top: 5px;
 }
 
 #inputBox_Button {
@@ -167,6 +168,8 @@ button {
 #addItem {
     width: 20%;
     max-width: 50px;
+}
+.enabled{
     background-color: lightgreen;
 }
 .disabled {
@@ -205,7 +208,6 @@ button {
 #sortDropDown{
     width: 90%;
 }
-
 
 .react-toggle {
     touch-action: pan-x;
@@ -354,6 +356,26 @@ button {
     position:relative;
     right: 10px;
     top: -7px;
+}
+#shareListsFromList{
+    width: 20px;
+    grid-row: 1;
+    grid-column: 3;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+@keyframes shareTilts {
+    0%   {transform: rotate(0deg);}
+    25% {transform: rotate(-10deg);}
+    50%  {transform: rotate(-15deg);}
+    75% {transform: rotate(-10deg);}
+    100% {transform: rotate(0deg);}
+}
+#shareListsFromList:hover{
+    text-shadow: 1px 1px yellow;
+    animation-name: shareTilts;
+    animation-duration: 500ms;
 }
 
 
