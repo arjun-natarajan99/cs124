@@ -1,5 +1,3 @@
 # To-Do List Application
 
-The following application is built in React.js:
-
-[Link to application](https://arjun-natarajan99.github.io/cs124/)
+The following application is for iOS and built in React Native.
