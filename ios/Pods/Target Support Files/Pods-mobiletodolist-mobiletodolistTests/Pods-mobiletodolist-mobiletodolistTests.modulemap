@@ -1,6 +1,0 @@
-module Pods_mobiletodolist_mobiletodolistTests {
-  umbrella header "Pods-mobiletodolist-mobiletodolistTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
