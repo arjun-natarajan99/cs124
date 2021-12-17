@@ -1,72 +1,57 @@
-# Lab 4 Design Document 
+# Lab 6 Design Document 
 
 ## Design Decisions
 
-Our intial mockup for our design is shown below:
-
-<!-- ![Whiteboard Design](./whiteboard_design.jpg) -->
-<img src="images/whiteboard_design.jpg" alt="drawing" width="600"/>
-
-
-Picture (1) is what the empty to-do list would look like. For the empty list we want to add constraints by hiding all the actions other than adding an item to the list. This simplifies the experience for the user and also avoids errors of them potentially trying to edit, delete, or hide non-existent items of the list. Additionally, it highlights the only available action, of adding tasks to the list.
-
-Picture (2) shows what the to-do list would like like after at least one task is added. With tasks on the to-do list, the user should be able to check them off, edit the names of the list, and hide/delete completed items. We want to group the "Edit List" button near the button to add items to the list because they serve similar functions. Similarly, we group the "Hide Completed Items" and "Delete Completed Items" buttons because they serve a similar purpose. However, we want the "Delete Completed Items" to be red because it is a permanent and potentially harmful action than any of the other buttons.
-
-Picture (3) shows what happens if the user presses "Edit List". At this point, the field and button to add new items from the list, as well as the hide and delete buttons, disappear to indicate that the purpose of this button is to edit existing items on the to-do list. The label of this button also changes to "Save Changes".
-
-Picture (4) depicts what happens if the user pressed "Delete Completed Items". This opens up a warning screen over the list, informing the user that they are about to permanently delete completed tasks. It asks the user to confirm or deny that this is the desired action.
-
-Picture (5) shows what the list looks like after the "Hide Completed Items" button is pressed. The layout remains unchanged, except the button changes from "Hide Completed Items" to "Show Completed Items".
+This is an iOS application built with React Native. It is intended to have a very similar design to its Web app counterpart, to provide consistency to the user. 
 
 
 ## Alternative Design Considerations
-
-The main alternative design choice that we discussed had to do with how we should display multiple lists in the main page of our app. One idea was to have tabs in the app that the user could click on to maneuver between different to-do lists. However, we decided that it was better to display the list names vertically and highlight/bold a list while it is being hovered over, to indicate that the user can click on it.
+Our main alternative design consideration was whether to completely redesign the application or to make it similar to our previous iterations of the web application. We decided that making it as similar to the web application as possible, while maintaining functionality for this form factor, would be the most effective design. 
 
 ## User Testing
 
-For user testing, we showed the application to a friend of ours and asked them to create new lists and add items in each of them, while marking a couple as complete and then hiding/deleting them. During this testing, we learned that our button for hiding completed items was not easily understandable. So, we switched to using an animated toggle to indicate whether the list is currently hiding completed items or not.
-
-For accessibility testing, we had a friend of ours to try using our application while closing their eyes and using only the keyboard. From this testing we discovered that we needed to fix descriptions for the deletion of list items, editing of a list's name, and the back button for going back to the main page.
+For user testing, we showed the iOS simulator to a friend and one of our parents. We observed that since this was a mobile application, users had the tendency to make many taps to discover what actions were supported. This aligned with our expectations and supported our decision to remove the "Edit Items" Button (detailed below). Our other design decisions were also well supported by user testing, and we did not find any significant design flaws.
 
 
 ## Final Design
 
-Below we see what the screen looks like when no lists have been created. The add button is dimmed when there is no input in the textbox. 
+Below we see what the login screen looks like. Although the web application has login using Google, we were unable to successfully implement this on mobile. As before, when creating an account, we ensure that the user creates a secure password.
 
-<img src="images/EmptyLists.png" alt="drawing" width="300"/>
+<img src="images/signIn.png" alt="drawing" width="300"/>
 
-Now, we see what the screen looks like when the user has created multiple lists. As before, when there is input to the textbox, the add button brightens to notify the user that they can add the item. Additionally, for non-mobile users, the list names get highlighted and underlined when hovered over.
+Once logged in, this is what the user would see. This design is nearly identical to the web application. When there is no text in the text input, the button is a darker blue and disabled, and it brightens when the user is allowed to create a list.
 
-<img src="images/MultipleLists.png" alt="drawing" width="300"/>
+<img src="images/emptylist.png" alt="drawing" width="300"/>
 
-This is what the user would see if they select the "Homework" list. Here, you can see the updated Hide Completed Items toggle, which is an improvement based on user testing. The user can see the list name at the top of their screen, and can edit it by clicking the pencil icon. Also, they can use the back arrow at the top left to navigate back to the main page with all of their to-do lists.
+To log out and/or verify their account, the user can click on their account name and the following two buttons will appear. 
 
-<img src="images/ListWithCompleted.png" alt="drawing" width="300"/>
+<img src="images/verify.png" alt="drawing" width="300"/>
 
-If a user toggle the Hide Completed Items option on, the toggle shows a checkmark and the completed items fade away. Also, we added lines between items to more clearly separate them. Also, when editing an list item, if the item changes position in the list due to sorting, it will scroll into view. We also fixed the cursor to works properly.
+Now, if the user creates a few lists, they would see the following. They can press the X button to delete any of the lists, the arrow to share the list, or click on the list name to go to the list. In our web application the X button turned red on hover, but since there is no hovering on mobile, we decided to have it always be red. They can also sort these lists by creation date and name.
 
-<img src="images/HideCompletedItems.png" alt="drawing" width="300"/>
+<img src="images/fewlists.png" alt="drawing" width="300"/>
 
-This is what the user sees if they click on the pencil icon to edit the list name. 
+If the user presses on the arrow to share, the following screen appears, showing a list of emails the user would like to share the list with, and a list of emails that are already shared.
 
-<img src="images/EditListName.png" alt="drawing" width="300"/>
+<img src="images/share.png" alt="drawing" width="300"/>
 
-[Click here](https://youtu.be/KlwYgEHD32k) to view the demostration of our app using the screen reader.
+When looking at a list and its tasks, the user would see the following. The main change from the Web application is the removal of the "Edit Items" button. Since this is a mobile application, users are already used to pressing on and being able to edit it, so we decided that we did not need to a dedicated button to enable editing. Instead, the user can always tap on the task name or its priority and edit them. 
 
-[Click here](https://youtu.be/Bq7MhzmsT9s) to view the demostration of our app using only the keyboard.
+<img src="images/fewItems.png" alt="drawing" width="300"/>
+
+If the user marks a task as complete, a switch to hide completed items and a button to delete completed items appear, as follows.
+
+<img src="images/completed.png" alt="drawing" width="300"/>
+
+If the user then decided to delete completed items, they are shown the following warning. We intentionally made the Confirm option red to indicate that it is destructive.
+
+<img src="images/deletecompleted.png" alt="drawing" width="300"/>
 
 ## Challenges
-We had a few challenges this week with responsive design and meaningful user interface. Because we added lost of functionality (a main page with all of the list names, new buttons for navigation, a new toggle button, etc.) this week, we needed to make sure that all of the extra graphics fit within screens of different sizes. This took some time, but we decided to use a combination of flex boxes, alignment commands, and media queries to ensure that our application was usable for the different sizes. 
-
-Another challenge we ran into was ensuring that the application was compatible and easy to use with a screen reader. We did user testing, and tested the app extensively ourselves in attempts to make it as compatible as possible with keyboard and screen reader users.
-
-
+We had many challenges in create this application. First, learning React Native was difficult. Although it is similar to React, there are a large number of differences. It was difficult to understand how platform support worked in React Native and we had some difficulties with the iOS Simulator. There were also challenges finding useful/up-to-date libraries, such as for the priority and sorting drop-down menus. 
 
 ## Pride Points
 
-We are most proud of our thoughtfulness and incorporation of ideas as to how a user would actually want to interact with this product. For example, the user can select a priority for a task when creating it, but they are not forced to do so. The attention to detail in ensuring that the menu elements in the top two rows are all aligned are also things we are proud of.
+We are most proud of our consistency between the web and mobile versions of this application, yet our ability to take advantage of each platform's specific nuances/ use cases. The consistency in our design makes it easy for users to go back and forth between both versions, and both designs are extremely simple and understandable. 
 
-We are proud of the flow for deleting  items. We put some thought into this flow, and as a result made the "Delete all Completed Items" button red and created a pop-up window so that the user would have to confirm that they really wanted to delete their items. Additionally, when the user deletes or hides completed items, they slowly fade out rather than immediately disappearing. Moreover, on the desktop, if a user highlights over the X button to delete an item, it turns red just as the delete all completed items button is, which creates a unified design language that is understandable. 
-
-We are also proud of our user testing. Through user testing, we were able to make our application more accessible to keyboard and screen reader users. Additionally, we gained valuable ideas about how the sizing of our graphics should respond to different screen sizes.
+Specific to this app, we are very happy with our choice of color for buttons and actions. Consistently throughout the app, blue buttons are additive or non-harmful, whereas red buttons are destructive. This consistency again allows users to better understand what buttons may do if they are confused.
